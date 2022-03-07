@@ -6,6 +6,19 @@ const state = {
     searchText: '',
 }
 
+const mutations = {
+    removeItem(state, payload) {
+        localStorage.removeItem(payload.userItem.item)
+        state.userItems.splice(payload.index, 1)
+    },
+    updateSearchText(state, text) {
+        state.searchText = text
+    },
+    setGitUsers(state, data) {
+        state.gitUsers = data
+    }
+}
+
 const getters = {
     getSearchText: (state) => {
         return state.searchText
@@ -16,15 +29,20 @@ const getters = {
 }
 
 const actions = {
+    changeSearchText({commit}, value) {
+        commit('updateSearchText', value)
+    },
+
     async getGitUsersAction ({commit}) {
         const response = await getGitUsersApi(state.searchText)
         commit('setGitUsers', response.data.items)
-        comsole.log("get git users : ", state.gitUsers)
+        console.log('get git users : ', state.gitUsers)
     },
 }
 
 export default {
     state,
+    mutations,
     getters,
     actions,
 }
