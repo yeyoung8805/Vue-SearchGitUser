@@ -7,10 +7,6 @@ const state = {
 }
 
 const mutations = {
-    removeItem(state, payload) {
-        localStorage.removeItem(payload.userItem.item)
-        state.userItems.splice(payload.index, 1)
-    },
     updateSearchText(state, text) {
         state.searchText = text
     },
