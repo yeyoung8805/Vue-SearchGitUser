@@ -5,6 +5,5 @@ module.exports = defineConfig({
 
 module.exports = {
   devServer: {
-    overlay : false
   }
 }
